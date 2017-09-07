@@ -177,13 +177,14 @@ function genToken(ch) {
   if (offset < 0) {
     var begin = 0;
     var end = UNIHANS.length - 1;
+    console.log('Start Binary Search ....');
     while (begin <= end) {
       // same as Math.floor
       // Binary Search
       offset = ~~((begin + end) / 2);
       var unihan = UNIHANS[offset];
       cmp = COLLATOR.compare(ch, unihan);
-
+      console.log('Offset => %s, unihan => %s, cmp => %s, begein => %s, end => %s', offset, unihan, cmp, begin, end);
       // Catch it.
       if (cmp === 0) {
         break;
@@ -203,6 +204,7 @@ function genToken(ch) {
     offset--;
   }
 
+  // 熙 -> offset = 345 PINYINS[offset] => 夕
   token.target = PINYINS[offset];
   if (!token.target) {
     token.type = UNKNOWN;

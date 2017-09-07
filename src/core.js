@@ -93,13 +93,20 @@ function genToken (ch) {
   if (offset < 0) {
     let begin = 0
     let end = UNIHANS.length - 1
+    console.log('Start Binary Search ....')
     while (begin <= end) {
       // same as Math.floor
       // Binary Search
       offset = ~~((begin + end) / 2)
       let unihan = UNIHANS[offset]
       cmp = COLLATOR.compare(ch, unihan)
-
+      console.log('Offset => %s, unihan => %s, cmp => %s, begein => %s, end => %s',
+        offset,
+        unihan,
+        cmp,
+        begin,
+        end
+      )
       // Catch it.
       if (cmp === 0) {
         break
