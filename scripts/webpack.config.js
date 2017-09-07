@@ -38,12 +38,7 @@ module.exports = [
     },
     module: { rules: RULES.slice(0, 1) },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin({
-        compress: true,
-        mangle: true,
-        beautify: false
-      })
-    ]
+          ]
   },
   // docs
   {

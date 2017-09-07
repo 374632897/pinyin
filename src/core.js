@@ -2,6 +2,7 @@
 
 const DICT = require('./dict')
 
+// '\u963F' => 阿, '\u963f'.replace('\\u', '0x')
 const FIRST_PINYIN_UNIHAN = '\u963F'
 const LAST_PINYIN_UNIHAN = '\u9FFF'
 
@@ -55,16 +56,21 @@ function genToken (ch) {
 
   let offset = -1
   let cmp
+  // Binary Search
+  // 扩展 ASCII 字符集长度为256
   if (ch.charCodeAt(0) < 256) {
     token.type = LATIN
     token.target = ch
     return token
   } else {
     cmp = COLLATOR.compare(ch, FIRST_PINYIN_UNIHAN)
+    // < 0 说明ch 在 FIRST_PINYIN_UNIHAN 的前面
+    // but the first char is 0x963f, so its type is unkown 
     if (cmp < 0) {
       token.type = UNKNOWN
       token.target = ch
       return token
+      // Equal
     } else if (cmp === 0) {
       token.type = PINYIN
       offset = 0
@@ -75,6 +81,8 @@ function genToken (ch) {
         token.target = ch
         return token
       } else if (cmp === 0) {
+        // while cmp equals 0, the char is same as the last PINYIN
+        // so why not return object immidiatly?
         token.type = PINYIN
         offset = UNIHANS.length - 1
       }
@@ -86,6 +94,8 @@ function genToken (ch) {
     let begin = 0
     let end = UNIHANS.length - 1
     while (begin <= end) {
+      // same as Math.floor
+      // Binary Search
       offset = ~~((begin + end) / 2)
       let unihan = UNIHANS[offset]
       cmp = COLLATOR.compare(ch, unihan)
@@ -109,6 +119,7 @@ function genToken (ch) {
     offset--
   }
 
+  // 熙 -> offset = 345 PINYINS[offset] => 夕
   token.target = PINYINS[offset]
   if (!token.target) {
     token.type = UNKNOWN

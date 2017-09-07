@@ -1,1 +1,365 @@
-!function(N,A){"object"==typeof exports&&"object"==typeof module?module.exports=A():"function"==typeof define&&define.amd?define([],A):"object"==typeof exports?exports.Pinyin=A():N.Pinyin=A()}(this,function(){return function(N){function A(I){if(t[I])return t[I].exports;var U=t[I]={i:I,l:!1,exports:{}};return N[I].call(U.exports,U,U.exports,A),U.l=!0,U.exports}var t={};return A.m=N,A.c=t,A.i=function(N){return N},A.d=function(N,t,I){A.o(N,t)||Object.defineProperty(N,t,{configurable:!1,enumerable:!0,get:I})},A.n=function(N){var t=N&&N.__esModule?function(){return N.default}:function(){return N};return A.d(t,"a",t),t},A.o=function(N,A){return Object.prototype.hasOwnProperty.call(N,A)},A.p="",A(A.s=3)}([function(N,A,t){"use strict";function I(N){N&&("function"==typeof N&&(N=[N]),N.forEach&&N.forEach(function(N){"function"==typeof N&&N(o)}))}function U(N){return N||null===i?("object"===("undefined"==typeof Intl?"undefined":n(Intl))&&Intl.Collator?(f=new Intl.Collator(["zh-Hans-CN","zh-CN"]),i=1===Intl.Collator.supportedLocalesOf(["zh-CN"]).length):i=!1,i):i}function e(N){var A=o.UNIHANS,t=o.PINYINS,I=o.EXCEPTIONS,U={source:N};if(N in I)return U.type=E,U.target=I[N],U;var e=-1,r=void 0;if(N.charCodeAt(0)<256)return U.type=H,U.target=N,U;if((r=f.compare(N,G))<0)return U.type=u,U.target=N,U;if(0===r)U.type=E,e=0;else{if((r=f.compare(N,O))>0)return U.type=u,U.target=N,U;0===r&&(U.type=E,e=A.length-1)}if(U.type=E,e<0)for(var n=0,i=A.length-1;n<=i;){e=~~((n+i)/2);var S=A[e];if(0===(r=f.compare(N,S)))break;r>0?n=e+1:i=e-1}return r<0&&e--,U.target=t[e],U.target||(U.type=u,U.target=U.source),U}function r(N){if("string"!=typeof N)throw new Error("argument should be string.");if(!U())throw new Error("not support Intl or zh-CN language.");return N.split("").map(function(N){return e(N)})}var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(N){return typeof N}:function(N){return N&&"function"==typeof Symbol&&N.constructor===Symbol&&N!==Symbol.prototype?"symbol":typeof N},o=t(2),G="阿",O="鿿",H=1,E=2,u=3,i=null,f=void 0;N.exports={isSupported:U,parse:r,patchDict:I,genToken:e,convertToPinyin:function(N,A,t){return r(N).map(function(N){return t&&N.type===E?N.target.toLowerCase():N.target}).join(A||"")}}},function(N,A,t){"use strict";A=N.exports=function(N){N.EXCEPTIONS={"嗲":"DIA","碡":"ZHOU","聒":"GUO","炔":"QUE","蚵":"KE","砉":"HUA","嬷":"MO","蹊":"XI","丬":"PAN","霰":"XIAN","豉":"CHI","饧":"XING","帧":"ZHEN","芎":"XIONG","谁":"SHUI","钶":"KE"},N.UNIHANS[91]="伕",N.UNIHANS[347]="仚",N.UNIHANS[393]="诌",N.UNIHANS[39]="婤",N.UNIHANS[50]="腠",N.UNIHANS[369]="攸",N.UNIHANS[123]="乯",N.UNIHANS[171]="刕",N.UNIHANS[102]="佝",N.UNIHANS[126]="犿",N.UNIHANS[176]="列",N.UNIHANS[178]="刢",N.UNIHANS[252]="娝",N.UNIHANS[330]="偸"},A.shouldPatch=function(N){return"function"==typeof N&&("FOU"===N("伕").target&&"XIA"===N("仚").target&&"ZHONG"===N("诌").target&&"CHONG"===N("婤").target&&"CONG"===N("腠").target&&"YONG"===N("攸").target&&"HOU"===N("乯").target&&"LENG"===N("刕").target&&"GONG"===N("佝").target&&"HUAI"===N("犿").target&&"LIAO"===N("列").target&&"LIN"===N("刢").target&&"E"===N("钶").target)}},function(N,A,t){"use strict";var I=["阿","哎","安","肮","凹","八","挀","扳","邦","勹","陂","奔","伻","屄","边","灬","憋","汃","冫","癶","峬","嚓","偲","参","仓","撡","冊","嵾","曽","叉","芆","辿","伥","抄","车","抻","阷","吃","充","抽","出","欻","揣","巛","刅","吹","旾","逴","呲","匆","凑","粗","汆","崔","邨","搓","咑","呆","丹","当","刀","嘚","扥","灯","氐","甸","刁","爹","丁","丟","东","吺","厾","耑","垖","吨","多","妸","诶","奀","鞥","儿","发","帆","匚","飞","分","丰","覅","仏","紑","夫","旮","侅","甘","冈","皋","戈","给","根","刯","工","勾","估","瓜","乖","关","光","归","丨","呙","哈","咍","佄","夯","茠","诃","黒","拫","亨","噷","叿","齁","乎","花","怀","欢","巟","灰","昏","吙","丌","加","戋","江","艽","阶","巾","坕","冂","丩","凥","姢","噘","军","咔","开","刊","忼","尻","匼","肎","劥","空","抠","扝","夸","蒯","宽","匡","亏","坤","扩","垃","来","兰","啷","捞","肋","勒","崚","哩","俩","奁","良","撩","毟","拎","伶","溜","囖","龙","瞜","噜","驴","娈","掠","抡","罗","呣","妈","埋","嫚","牤","猫","么","呅","门","甿","咪","宀","喵","乜","民","名","谬","摸","哞","毪","嗯","拏","腉","囡","囔","孬","疒","娞","恁","能","妮","拈","娘","鸟","捏","囜","宁","妞","农","羺","奴","女","奻","疟","黁","挪","喔","讴","妑","拍","眅","乓","抛","呸","喷","匉","丕","囨","剽","氕","姘","乒","钋","剖","仆","七","掐","千","呛","悄","癿","亲","靑","卭","丘","区","峑","缺","夋","呥","穣","娆","惹","人","扔","日","茸","厹","邚","挼","堧","婑","瞤","捼","仨","毢","三","桒","掻","閪","森","僧","杀","筛","山","伤","弰","奢","申","升","尸","収","书","刷","衰","闩","双","脽","吮","说","厶","忪","捜","苏","狻","夊","孙","唆","他","囼","坍","汤","夲","忑","熥","剔","天","旫","帖","厅","囲","偷","凸","湍","推","吞","乇","穵","歪","弯","尣","危","昷","翁","挝","乌","夕","虲","仙","乡","灱","些","心","星","凶","休","吁","吅","削","坃","丫","恹","央","幺","倻","一","囙","应","哟","佣","优","扜","囦","曰","晕","帀","災","兂","匨","傮","则","贼","怎","増","扎","捚","沾","张","佋","蜇","贞","争","之","中","州","朱","抓","拽","专","妆","隹","宒","卓","乲","宗","邹","租","钻","厜","尊","昨","兙"],U=["A","AI","AN","ANG","AO","BA","BAI","BAN","BANG","BAO","BEI","BEN","BENG","BI","BIAN","BIAO","BIE","BIN","BING","BO","BU","CA","CAI","CAN","CANG","CAO","CE","CEN","CENG","CHA","CHAI","CHAN","CHANG","CHAO","CHE","CHEN","CHENG","CHI","CHONG","CHOU","CHU","CHUA","CHUAI","CHUAN","CHUANG","CHUI","CHUN","CHUO","CI","CONG","COU","CU","CUAN","CUI","CUN","CUO","DA","DAI","DAN","DANG","DAO","DE","DEN","DENG","DI","DIAN","DIAO","DIE","DING","DIU","DONG","DOU","DU","DUAN","DUI","DUN","DUO","E","EI","EN","ENG","ER","FA","FAN","FANG","FEI","FEN","FENG","FIAO","FO","FOU","FU","GA","GAI","GAN","GANG","GAO","GE","GEI","GEN","GENG","GONG","GOU","GU","GUA","GUAI","GUAN","GUANG","GUI","GUN","GUO","HA","HAI","HAN","HANG","HAO","HE","HEI","HEN","HENG","HM","HONG","HOU","HU","HUA","HUAI","HUAN","HUANG","HUI","HUN","HUO","JI","JIA","JIAN","JIANG","JIAO","JIE","JIN","JING","JIONG","JIU","JU","JUAN","JUE","JUN","KA","KAI","KAN","KANG","KAO","KE","KEN","KENG","KONG","KOU","KU","KUA","KUAI","KUAN","KUANG","KUI","KUN","KUO","LA","LAI","LAN","LANG","LAO","LE","LEI","LENG","LI","LIA","LIAN","LIANG","LIAO","LIE","LIN","LING","LIU","LO","LONG","LOU","LU","LV","LUAN","LVE","LUN","LUO","M","MA","MAI","MAN","MANG","MAO","ME","MEI","MEN","MENG","MI","MIAN","MIAO","MIE","MIN","MING","MIU","MO","MOU","MU","N","NA","NAI","NAN","NANG","NAO","NE","NEI","NEN","NENG","NI","NIAN","NIANG","NIAO","NIE","NIN","NING","NIU","NONG","NOU","NU","NV","NUAN","NVE","NUN","NUO","O","OU","PA","PAI","PAN","PANG","PAO","PEI","PEN","PENG","PI","PIAN","PIAO","PIE","PIN","PING","PO","POU","PU","QI","QIA","QIAN","QIANG","QIAO","QIE","QIN","QING","QIONG","QIU","QU","QUAN","QUE","QUN","RAN","RANG","RAO","RE","REN","RENG","RI","RONG","ROU","RU","RUA","RUAN","RUI","RUN","RUO","SA","SAI","SAN","SANG","SAO","SE","SEN","SENG","SHA","SHAI","SHAN","SHANG","SHAO","SHE","SHEN","SHENG","SHI","SHOU","SHU","SHUA","SHUAI","SHUAN","SHUANG","SHUI","SHUN","SHUO","SI","SONG","SOU","SU","SUAN","SUI","SUN","SUO","TA","TAI","TAN","TANG","TAO","TE","TENG","TI","TIAN","TIAO","TIE","TING","TONG","TOU","TU","TUAN","TUI","TUN","TUO","WA","WAI","WAN","WANG","WEI","WEN","WENG","WO","WU","XI","XIA","XIAN","XIANG","XIAO","XIE","XIN","XING","XIONG","XIU","XU","XUAN","XUE","XUN","YA","YAN","YANG","YAO","YE","YI","YIN","YING","YO","YONG","YOU","YU","YUAN","YUE","YUN","ZA","ZAI","ZAN","ZANG","ZAO","ZE","ZEI","ZEN","ZENG","ZHA","ZHAI","ZHAN","ZHANG","ZHAO","ZHE","ZHEN","ZHENG","ZHI","ZHONG","ZHOU","ZHU","ZHUA","ZHUAI","ZHUAN","ZHUANG","ZHUI","ZHUN","ZHUO","ZI","ZONG","ZOU","ZU","ZUAN","ZUI","ZUN","ZUO",""],e={"曾":"ZENG","沈":"SHEN","嗲":"DIA","碡":"ZHOU","聒":"GUO","炔":"QUE","蚵":"KE","砉":"HUA","嬤":"MO","嬷":"MO","蹒":"PAN","蹊":"XI","丬":"PAN","霰":"XIAN","莘":"XIN","豉":"CHI","饧":"XING","筠":"JUN","长":"CHANG","帧":"ZHEN","峙":"SHI","郍":"NA","芎":"XIONG","谁":"SHUI"};N.exports={PINYINS:U,UNIHANS:I,EXCEPTIONS:e}},function(N,A,t){"use strict";var I=t(0),U=t(1);I.isSupported()&&U.shouldPatch(I.genToken)&&I.patchDict(U),N.exports=I}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Pinyin"] = factory();
+	else
+		root["Pinyin"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var DICT = __webpack_require__(2);
+
+// '\u963F' => 阿, '\u963f'.replace('\\u', '0x')
+var FIRST_PINYIN_UNIHAN = '\u963F';
+var LAST_PINYIN_UNIHAN = '\u9FFF';
+
+var LATIN = 1;
+var PINYIN = 2;
+var UNKNOWN = 3;
+
+var supported = null;
+var COLLATOR = void 0;
+
+function patchDict(patchers) {
+  if (!patchers) return;
+  if (typeof patchers === 'function') {
+    patchers = [patchers];
+  }
+  if (patchers.forEach) {
+    patchers.forEach(function (p) {
+      typeof p === 'function' && p(DICT);
+    });
+  }
+}
+
+function isSupported(force) {
+  if (!force && supported !== null) {
+    return supported;
+  }
+  if ((typeof Intl === 'undefined' ? 'undefined' : _typeof(Intl)) === 'object' && Intl.Collator) {
+    COLLATOR = new Intl.Collator(['zh-Hans-CN', 'zh-CN']);
+    supported = Intl.Collator.supportedLocalesOf(['zh-CN']).length === 1;
+  } else {
+    supported = false;
+  }
+  return supported;
+}
+
+function genToken(ch) {
+  // Access DICT here, give the chance to patch DICT.
+  var UNIHANS = DICT.UNIHANS;
+  var PINYINS = DICT.PINYINS;
+  var EXCEPTIONS = DICT.EXCEPTIONS;
+  var token = {
+    source: ch
+
+    // First check EXCEPTIONS map, then search with UNIHANS table.
+  };if (ch in EXCEPTIONS) {
+    token.type = PINYIN;
+    token.target = EXCEPTIONS[ch];
+    return token;
+  }
+
+  var offset = -1;
+  var cmp = void 0;
+  // Binary Search
+  // 扩展 ASCII 字符集长度为256
+  if (ch.charCodeAt(0) < 256) {
+    token.type = LATIN;
+    token.target = ch;
+    return token;
+  } else {
+    cmp = COLLATOR.compare(ch, FIRST_PINYIN_UNIHAN);
+    // < 0 说明ch 在 FIRST_PINYIN_UNIHAN 的前面
+    // but the first char is 0x963f, so its type is unkown 
+    if (cmp < 0) {
+      token.type = UNKNOWN;
+      token.target = ch;
+      return token;
+      // Equal
+    } else if (cmp === 0) {
+      token.type = PINYIN;
+      offset = 0;
+    } else {
+      cmp = COLLATOR.compare(ch, LAST_PINYIN_UNIHAN);
+      if (cmp > 0) {
+        token.type = UNKNOWN;
+        token.target = ch;
+        return token;
+      } else if (cmp === 0) {
+        // while cmp equals 0, the char is same as the last PINYIN
+        // so why not return object immidiatly?
+        token.type = PINYIN;
+        offset = UNIHANS.length - 1;
+      }
+    }
+  }
+
+  token.type = PINYIN;
+  if (offset < 0) {
+    var begin = 0;
+    var end = UNIHANS.length - 1;
+    while (begin <= end) {
+      // same as Math.floor
+      // Binary Search
+      offset = ~~((begin + end) / 2);
+      var unihan = UNIHANS[offset];
+      cmp = COLLATOR.compare(ch, unihan);
+
+      // Catch it.
+      if (cmp === 0) {
+        break;
+      }
+      // Search after offset.
+      else if (cmp > 0) {
+          begin = offset + 1;
+        }
+        // Search before the offset.
+        else {
+            end = offset - 1;
+          }
+    }
+  }
+
+  if (cmp < 0) {
+    offset--;
+  }
+
+  token.target = PINYINS[offset];
+  if (!token.target) {
+    token.type = UNKNOWN;
+    token.target = token.source;
+  }
+  return token;
+}
+
+function parse(str) {
+  if (typeof str !== 'string') {
+    throw new Error('argument should be string.');
+  }
+  if (!isSupported()) {
+    throw new Error('not support Intl or zh-CN language.');
+  }
+  return str.split('').map(function (v) {
+    return genToken(v);
+  });
+}
+
+module.exports = {
+  isSupported: isSupported,
+  parse: parse,
+  patchDict: patchDict,
+  genToken: genToken, // inner usage
+  convertToPinyin: function convertToPinyin(str, separator, lowerCase) {
+    return parse(str).map(function (v) {
+      if (lowerCase && v.type === PINYIN) {
+        return v.target.toLowerCase();
+      }
+      return v.target;
+    }).join(separator || '');
+  }
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports = module.exports = function patcher(DICT) {
+  // Update EXCEPTIONS dict.
+  DICT.EXCEPTIONS = {
+    '\u55F2': 'DIA', // DIE 嗲
+    '\u78A1': 'ZHOU', // DU 碡
+    '\u8052': 'GUO', // GUA 聒
+    '\u7094': 'QUE', // GUI 炔
+    '\u86B5': 'KE', // HE 蚵
+    '\u7809': 'HUA', // HUO 砉
+    '\u5B37': 'MO', // MA 嬷 新增
+    '\u8E4A': 'XI', // QI 蹊
+    '\u4E2C': 'PAN', // QIANG 丬
+    '\u9730': 'XIAN', // SAN 霰
+    '\u8C49': 'CHI', // SHI 豉
+    '\u9967': 'XING', // TANG 饧
+    '\u5E27': 'ZHEN', // ZHENG 帧
+    '\u828E': 'XIONG', // 芎
+    '\u8C01': 'SHUI', // 谁
+    '\u94B6': 'KE' // 钶
+
+
+    // Update UNIHANS dict.
+  };DICT.UNIHANS[91] = '\u4F15'; // FU: 夫 --> 伕
+  DICT.UNIHANS[347] = '\u4EDA'; // XIAN: 仙 --> 仚
+  DICT.UNIHANS[393] = '\u8BCC'; // ZHOU: 州 --> 诌
+  DICT.UNIHANS[39] = '\u5A64'; // CHOU: 抽 --> 婤
+  DICT.UNIHANS[50] = '\u8160'; // COU: 凑 --> 腠
+  DICT.UNIHANS[369] = '\u6538'; // YOU: 优 --> 攸
+  DICT.UNIHANS[123] = '\u4E6F'; // HU: 乎 --> 乯
+  DICT.UNIHANS[171] = '\u5215'; // LI: 哩 --> 刕
+  DICT.UNIHANS[102] = '\u4F5D'; // GOU: 勾 --> 佝
+  DICT.UNIHANS[126] = '\u72BF'; // HUAN: 欢 --> 犿
+  DICT.UNIHANS[176] = '\u5217'; // LIE: 毟 --> 列
+  DICT.UNIHANS[178] = '\u5222'; // LING: 伶 --> 刢
+  DICT.UNIHANS[252] = '\u5A1D'; // POU: 剖 --> 娝
+  DICT.UNIHANS[330] = '\u5078'; // TOU: 偷 --> 偸
+};
+
+exports.shouldPatch = function shouldPatch(toToken) {
+  if (typeof toToken !== 'function') return false;
+  // Special unihans that get incorrect pinyins.
+  if (toToken('\u4F15').target === 'FOU' && toToken('\u4EDA').target === 'XIA' && toToken('\u8BCC').target === 'ZHONG' && toToken('\u5A64').target === 'CHONG' && toToken('\u8160').target === 'CONG' && toToken('\u6538').target === 'YONG' && toToken('\u4E6F').target === 'HOU' && toToken('\u5215').target === 'LENG' && toToken('\u4F5D').target === 'GONG' && toToken('\u72BF').target === 'HUAI' && toToken('\u5217').target === 'LIAO' && toToken('\u5222').target === 'LIN' && toToken('\u94B6').target === 'E') {
+    return true;
+  }
+  return false;
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Source: <https://android.googlesource.com/platform/packages/providers/ContactsProvider/+/0c49720fb3d58e346739c2ccd56ed2b739249e07/src/com/android/providers/contacts/HanziToPinyin.java>
+ * Updated by creeper
+ */
+
+
+var UNIHANS = ['\u963F', '\u54CE', '\u5B89', '\u80AE', '\u51F9', '\u516B', '\u6300', '\u6273', '\u90A6', '\u52F9', '\u9642', '\u5954', '\u4F3B', '\u5C44', '\u8FB9', '\u706C', '\u618B', '\u6C43', '\u51AB', '\u7676', '\u5CEC', '\u5693', '\u5072', '\u53C2', '\u4ED3', '\u64A1', '\u518A', '\u5D7E', '\u66FD', '\u53C9', '\u8286', '\u8FBF', '\u4F25', '\u6284', '\u8F66', '\u62BB', '\u9637', '\u5403', '\u5145', '\u62BD', '\u51FA', '\u6B3B', '\u63E3', '\u5DDB', '\u5205', '\u5439', '\u65FE', '\u9034', '\u5472', '\u5306', '\u51D1', '\u7C97', '\u6C46', '\u5D14', '\u90A8', '\u6413', '\u5491', '\u5446', '\u4E39', '\u5F53', '\u5200', '\u561A', '\u6265', '\u706F', '\u6C10', '\u7538', '\u5201', '\u7239', '\u4E01', '\u4E1F', '\u4E1C', '\u543A', '\u53BE', '\u8011', '\u5796', '\u5428', '\u591A', '\u59B8', '\u8BF6', '\u5940', '\u97A5', '\u513F', '\u53D1', '\u5E06', '\u531A', '\u98DE', '\u5206', '\u4E30', '\u8985', '\u4ECF', '\u7D11', '\u592B', '\u65EE', '\u4F85', '\u7518', '\u5188', '\u768B', '\u6208', '\u7ED9', '\u6839', '\u522F', '\u5DE5', '\u52FE', '\u4F30', '\u74DC', '\u4E56', '\u5173', '\u5149', '\u5F52', '\u4E28', '\u5459', '\u54C8', '\u548D', '\u4F44', '\u592F', '\u8320', '\u8BC3', '\u9ED2', '\u62EB', '\u4EA8', '\u5677', '\u53FF', '\u9F41', '\u4E4E', '\u82B1', '\u6000', '\u6B22', '\u5DDF', '\u7070', '\u660F', '\u5419', '\u4E0C', '\u52A0', '\u620B', '\u6C5F', '\u827D', '\u9636', '\u5DFE', '\u5755', '\u5182', '\u4E29', '\u51E5', '\u59E2', '\u5658', '\u519B', '\u5494', '\u5F00', '\u520A', '\u5FFC', '\u5C3B', '\u533C', '\u808E', '\u52A5', '\u7A7A', '\u62A0', '\u625D', '\u5938', '\u84AF', '\u5BBD', '\u5321', '\u4E8F', '\u5764', '\u6269', '\u5783', '\u6765', '\u5170', '\u5577', '\u635E', '\u808B', '\u52D2', '\u5D1A', '\u54E9', '\u4FE9', '\u5941', '\u826F', '\u64A9', '\u6BDF', '\u62CE', '\u4F36', '\u6E9C', '\u56D6', '\u9F99', '\u779C', '\u565C', '\u9A74', '\u5A08', '\u63A0', '\u62A1', '\u7F57', '\u5463', '\u5988', '\u57CB', '\u5ADA', '\u7264', '\u732B', '\u4E48', '\u5445', '\u95E8', '\u753F', '\u54AA', '\u5B80', '\u55B5', '\u4E5C', '\u6C11', '\u540D', '\u8C2C', '\u6478', '\u54DE', '\u6BEA', '\u55EF', '\u62CF', '\u8149', '\u56E1', '\u56D4', '\u5B6C', '\u7592', '\u5A1E', '\u6041', '\u80FD', '\u59AE', '\u62C8', '\u5A18', '\u9E1F', '\u634F', '\u56DC', '\u5B81', '\u599E', '\u519C', '\u7FBA', '\u5974', '\u5973', '\u597B', '\u759F', '\u9EC1', '\u632A', '\u5594', '\u8BB4', '\u5991', '\u62CD', '\u7705', '\u4E53', '\u629B', '\u5478', '\u55B7', '\u5309', '\u4E15', '\u56E8', '\u527D', '\u6C15', '\u59D8', '\u4E52', '\u948B', '\u5256', '\u4EC6', '\u4E03', '\u6390', '\u5343', '\u545B', '\u6084', '\u767F', '\u4EB2', '\u9751', '\u536D', '\u4E18', '\u533A', '\u5CD1', '\u7F3A', '\u590B', '\u5465', '\u7A63', '\u5A06', '\u60F9', '\u4EBA', '\u6254', '\u65E5', '\u8338', '\u53B9', '\u909A', '\u633C', '\u5827', '\u5A51', '\u77A4', '\u637C', '\u4EE8', '\u6BE2', '\u4E09', '\u6852', '\u63BB', '\u95AA', '\u68EE', '\u50E7', '\u6740', '\u7B5B', '\u5C71', '\u4F24', '\u5F30', '\u5962', '\u7533', '\u5347', '\u5C38', '\u53CE', '\u4E66', '\u5237', '\u8870', '\u95E9', '\u53CC', '\u813D', '\u542E', '\u8BF4', '\u53B6', '\u5FEA', '\u635C', '\u82CF', '\u72FB', '\u590A', '\u5B59', '\u5506', '\u4ED6', '\u56FC', '\u574D', '\u6C64', '\u5932', '\u5FD1', '\u71A5', '\u5254', '\u5929', '\u65EB', '\u5E16', '\u5385', '\u56F2', '\u5077', '\u51F8', '\u6E4D', '\u63A8', '\u541E', '\u4E47', '\u7A75', '\u6B6A', '\u5F2F', '\u5C23', '\u5371', '\u6637', '\u7FC1', '\u631D', '\u4E4C', '\u5915', '\u8672', '\u4ED9', '\u4E61', '\u7071', '\u4E9B', '\u5FC3', '\u661F', '\u51F6', '\u4F11', '\u5401', '\u5405', '\u524A', '\u5743', '\u4E2B', '\u6079', '\u592E', '\u5E7A', '\u503B', '\u4E00', '\u56D9', '\u5E94', '\u54DF', '\u4F63', '\u4F18', '\u625C', '\u56E6', '\u66F0', '\u6655', '\u5E00', '\u707D', '\u5142', '\u5328', '\u50AE', '\u5219', '\u8D3C', '\u600E', '\u5897', '\u624E', '\u635A', '\u6CBE', '\u5F20', '\u4F4B', '\u8707', '\u8D1E', '\u4E89', '\u4E4B', '\u4E2D', '\u5DDE', '\u6731', '\u6293', '\u62FD', '\u4E13', '\u5986', '\u96B9', '\u5B92', '\u5353', '\u4E72', '\u5B97', '\u90B9', '\u79DF', '\u94BB', '\u539C', '\u5C0A', '\u6628', '\u5159'];
+
+// convert ascii array to Pinyin
+var PINYINS = ['A', 'AI', 'AN', 'ANG', 'AO', 'BA', 'BAI', 'BAN', 'BANG', 'BAO', 'BEI', 'BEN', 'BENG', 'BI', 'BIAN', 'BIAO', 'BIE', 'BIN', 'BING', 'BO', 'BU', 'CA', 'CAI', 'CAN', 'CANG', 'CAO', 'CE', 'CEN', 'CENG', 'CHA', 'CHAI', 'CHAN', 'CHANG', 'CHAO', 'CHE', 'CHEN', 'CHENG', 'CHI', 'CHONG', 'CHOU', 'CHU', 'CHUA', 'CHUAI', 'CHUAN', 'CHUANG', 'CHUI', 'CHUN', 'CHUO', 'CI', 'CONG', 'COU', 'CU', 'CUAN', 'CUI', 'CUN', 'CUO', 'DA', 'DAI', 'DAN', 'DANG', 'DAO', 'DE', 'DEN', 'DENG', 'DI', 'DIAN', 'DIAO', 'DIE', 'DING', 'DIU', 'DONG', 'DOU', 'DU', 'DUAN', 'DUI', 'DUN', 'DUO', 'E', 'EI', 'EN', 'ENG', 'ER', 'FA', 'FAN', 'FANG', 'FEI', 'FEN', 'FENG', 'FIAO', 'FO', 'FOU', 'FU', 'GA', 'GAI', 'GAN', 'GANG', 'GAO', 'GE', 'GEI', 'GEN', 'GENG', 'GONG', 'GOU', 'GU', 'GUA', 'GUAI', 'GUAN', 'GUANG', 'GUI', 'GUN', 'GUO', 'HA', 'HAI', 'HAN', 'HANG', 'HAO', 'HE', 'HEI', 'HEN', 'HENG', 'HM', 'HONG', 'HOU', 'HU', 'HUA', 'HUAI', 'HUAN', 'HUANG', 'HUI', 'HUN', 'HUO', 'JI', 'JIA', 'JIAN', 'JIANG', 'JIAO', 'JIE', 'JIN', 'JING', 'JIONG', 'JIU', 'JU', 'JUAN', 'JUE', 'JUN', 'KA', 'KAI', 'KAN', 'KANG', 'KAO', 'KE', 'KEN', 'KENG', 'KONG', 'KOU', 'KU', 'KUA', 'KUAI', 'KUAN', 'KUANG', 'KUI', 'KUN', 'KUO', 'LA', 'LAI', 'LAN', 'LANG', 'LAO', 'LE', 'LEI', 'LENG', 'LI', 'LIA', 'LIAN', 'LIANG', 'LIAO', 'LIE', 'LIN', 'LING', 'LIU', 'LO', 'LONG', 'LOU', 'LU', 'LV', 'LUAN', 'LVE', 'LUN', 'LUO', 'M', 'MA', 'MAI', 'MAN', 'MANG', 'MAO', 'ME', 'MEI', 'MEN', 'MENG', 'MI', 'MIAN', 'MIAO', 'MIE', 'MIN', 'MING', 'MIU', 'MO', 'MOU', 'MU', 'N', 'NA', 'NAI', 'NAN', 'NANG', 'NAO', 'NE', 'NEI', 'NEN', 'NENG', 'NI', 'NIAN', 'NIANG', 'NIAO', 'NIE', 'NIN', 'NING', 'NIU', 'NONG', 'NOU', 'NU', 'NV', 'NUAN', 'NVE', 'NUN', 'NUO', 'O', 'OU', 'PA', 'PAI', 'PAN', 'PANG', 'PAO', 'PEI', 'PEN', 'PENG', 'PI', 'PIAN', 'PIAO', 'PIE', 'PIN', 'PING', 'PO', 'POU', 'PU', 'QI', 'QIA', 'QIAN', 'QIANG', 'QIAO', 'QIE', 'QIN', 'QING', 'QIONG', 'QIU', 'QU', 'QUAN', 'QUE', 'QUN', 'RAN', 'RANG', 'RAO', 'RE', 'REN', 'RENG', 'RI', 'RONG', 'ROU', 'RU', 'RUA', 'RUAN', 'RUI', 'RUN', 'RUO', 'SA', 'SAI', 'SAN', 'SANG', 'SAO', 'SE', 'SEN', 'SENG', 'SHA', 'SHAI', 'SHAN', 'SHANG', 'SHAO', 'SHE', 'SHEN', 'SHENG', 'SHI', 'SHOU', 'SHU', 'SHUA', 'SHUAI', 'SHUAN', 'SHUANG', 'SHUI', 'SHUN', 'SHUO', 'SI', 'SONG', 'SOU', 'SU', 'SUAN', 'SUI', 'SUN', 'SUO', 'TA', 'TAI', 'TAN', 'TANG', 'TAO', 'TE', 'TENG', 'TI', 'TIAN', 'TIAO', 'TIE', 'TING', 'TONG', 'TOU', 'TU', 'TUAN', 'TUI', 'TUN', 'TUO', 'WA', 'WAI', 'WAN', 'WANG', 'WEI', 'WEN', 'WENG', 'WO', 'WU', 'XI', 'XIA', 'XIAN', 'XIANG', 'XIAO', 'XIE', 'XIN', 'XING', 'XIONG', 'XIU', 'XU', 'XUAN', 'XUE', 'XUN', 'YA', 'YAN', 'YANG', 'YAO', 'YE', 'YI', 'YIN', 'YING', 'YO', 'YONG', 'YOU', 'YU', 'YUAN', 'YUE', 'YUN', 'ZA', 'ZAI', 'ZAN', 'ZANG', 'ZAO', 'ZE', 'ZEI', 'ZEN', 'ZENG', 'ZHA', 'ZHAI', 'ZHAN', 'ZHANG', 'ZHAO', 'ZHE', 'ZHEN', 'ZHENG', 'ZHI', 'ZHONG', 'ZHOU', 'ZHU', 'ZHUA', 'ZHUAI', 'ZHUAN', 'ZHUANG', 'ZHUI', 'ZHUN', 'ZHUO', 'ZI', 'ZONG', 'ZOU', 'ZU', 'ZUAN', 'ZUI', 'ZUN', 'ZUO', ''];
+
+// Separate from UNIHANS & PINYINS.
+// So PINYINS are completely of alphabetical order, and no duplicate pinyin.
+var EXCEPTIONS = {
+  '\u66FE': 'ZENG', // CENG 曾
+  '\u6C88': 'SHEN', // CHEN 沈
+  '\u55F2': 'DIA', // DIE 嗲
+  '\u78A1': 'ZHOU', // DU 碡
+  '\u8052': 'GUO', // GUA 聒
+  '\u7094': 'QUE', // GUI 炔
+  '\u86B5': 'KE', // HE 蚵
+  '\u7809': 'HUA', // HUO 砉
+  '\u5B24': 'MO', // MA 嬤
+  '\u5B37': 'MO', // MA 嬷
+  '\u8E52': 'PAN', // MAN 蹒
+  '\u8E4A': 'XI', // QI 蹊
+  '\u4E2C': 'PAN', // QIANG 丬
+  '\u9730': 'XIAN', // SAN 霰
+  '\u8398': 'XIN', // SHEN 莘
+  '\u8C49': 'CHI', // SHI 豉
+  '\u9967': 'XING', // TANG 饧
+  '\u7B60': 'JUN', // YUN 筠
+  '\u957F': 'CHANG', // ZHANG 长
+  '\u5E27': 'ZHEN', // ZHENG 帧
+  '\u5CD9': 'SHI', // ZHI 峙
+  '\u90CD': 'NA',
+  '\u828E': 'XIONG',
+  '\u8C01': 'SHUI'
+};
+
+module.exports = {
+  PINYINS: PINYINS,
+  UNIHANS: UNIHANS,
+  EXCEPTIONS: EXCEPTIONS
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var pinyin = __webpack_require__(0);
+var patcher56L = __webpack_require__(1);
+
+// Patch dict for icudt56l.dat related env, such as safari|node v4.
+if (pinyin.isSupported() && patcher56L.shouldPatch(pinyin.genToken)) {
+  pinyin.patchDict(patcher56L);
+}
+
+module.exports = pinyin;
+
+/***/ })
+/******/ ]);
+});
